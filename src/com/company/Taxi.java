@@ -11,6 +11,7 @@ public class Taxi extends PublicTransportation<Taxi.TaxiState, TaxiPassengerInfo
     public static final int MAX_TAXI_PASSENGER_COUNT = 4;
     public static final int INIT_TAXI_PASSENGER = 0;
     public static final long INIT_TAXI_FARE = 3000;
+    public static final long MILER_PER_TAXI_FARE = 1000;
     public static final long INIT_MILEAGE = 1;
     public static final String INIT_DESTINATION = "";
 
@@ -73,7 +74,7 @@ public class Taxi extends PublicTransportation<Taxi.TaxiState, TaxiPassengerInfo
         }
         this.changeState(TaxiState.FULL);
         this.taxiPassengerInfo = newPassenger;
-        fare += 3000 + (INIT_MILEAGE - newPassenger.mileage) * 1000;
+        fare += INIT_TAXI_FARE + (newPassenger.mileage - INIT_MILEAGE) * MILER_PER_TAXI_FARE;
     }
 
     @Override
