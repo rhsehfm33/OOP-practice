@@ -18,9 +18,11 @@ public class BusNumberManager {
 
     public String getNewBusNumber() {
         StringBuilder newBusNumber = new StringBuilder();
-        for (int tempBusNumber = currentBusNumber; tempBusNumber > 0; tempBusNumber /= 9) {
+        for (int i = 0, tempBusNumber = currentBusNumber; i < NUMBER_OF_DIGITS_IN_BUS; ++i) {
             newBusNumber.append((char)('1' + tempBusNumber % 9));
+            tempBusNumber /= 9;
         }
-        return newBusNumber.toString();
+        ++currentBusNumber;
+        return newBusNumber.reverse().toString();
     }
 }

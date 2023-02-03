@@ -18,9 +18,11 @@ public class TaxiNumberManager {
 
     public String getNewTaxiNumber() {
         StringBuilder newTaxiNumber = new StringBuilder();
-        for (int tempTaxiNumber = currentTaxiNumber; tempTaxiNumber > 0; tempTaxiNumber /= 9) {
+        for (int i = 0, tempTaxiNumber = currentTaxiNumber; i < NUMBER_OF_DIGITS_IN_TAXI; ++i) {
             newTaxiNumber.append((char)('1' + tempTaxiNumber % 9));
+            tempTaxiNumber /= 9;
         }
+        ++currentTaxiNumber;
         return newTaxiNumber.reverse().toString();
     }
 }
